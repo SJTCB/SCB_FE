@@ -1,7 +1,6 @@
 /* 네비게이션 바 스타일 */
 .nav {
-  background-color: lightblue; /* 하늘색 배경 */
-  color: white; /* 텍스트 색상 */
+  background-color: #0000FF; /* 하늘색 배경 */
   display: flex; /* Flexbox 사용 */
   justify-content: center; /* 가로 중앙 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
@@ -39,12 +38,14 @@
 /* Menu 아이콘 */
 .menu-item .menu-icon {
   font-size: 1.5rem; /* 아이콘 크기 */
+  margin-left: 10px;
   margin-right: 10px; /* 아이콘과 텍스트 간 간격 */
   color: #007bff; /* 아이콘 색상 */
 }
 
 /* Menu 텍스트 */
 .menu-item .menu-text {
+  margin-left: 10px;
   font-size: 1.2rem; /* 텍스트 크기 */
   color: #333; /* 텍스트 색상 */
 }
@@ -120,5 +121,10 @@
   }
 }
 
+.title {
+  text-align: center;
+  background-color: lightblue; /* 하늘색 배경 */
+
+}
 
 

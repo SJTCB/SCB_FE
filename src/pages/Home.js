@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../component/Navbar';
 import Menu from '../component/Menu';
-import Footer from '../component/Footer';
+import Profile from '../component/Profile';
 import '../App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import Main from '../component/Main';
@@ -27,18 +27,19 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <Container fluid>
-        <Row>
-          <Col lg={2}>
-            <Menu setCommunityView={setCommunityView} /> {/* Community 뷰 설정 함수 전달 */}
+      <Container fluid className="p-0"> {/* 기본 패딩 제거 */}
+        <Row className="g-0" style={{ height: '100vh' }}> {/* 그리드 간격 제거 및 높이 설정 */}
+          <Col lg="auto" style={{ width: '70px', backgroundColor: 'gray' }}> {/* 회색 세로 컴포넌트 */}
+            <Profile />
           </Col>
-          <Col lg={8}>
+          <Col lg={2} style={{ backgroundColor: '#f8f9fa' }}> {/* 메뉴 영역 */}
+            <Menu setCommunityView={setCommunityView} />
+          </Col>
+          <Col lg={9}>
             {renderComponent()} {/* 동적으로 컴포넌트 렌더링 */}
-            <Footer />
           </Col>
         </Row>
       </Container>
-      
     </div>
   );
 };

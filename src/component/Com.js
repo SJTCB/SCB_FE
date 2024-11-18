@@ -8,28 +8,28 @@ const Com = ({view}) => {
           case 'Question':
             return (
               <div>
-                <h2>#질문방</h2>
+                <h2 className='title'>#질문방</h2>
                 <p>이곳은 질문과 답변을 공유하는 공간입니다. 궁금한 점을 자유롭게 물어보세요!</p>
               </div>
             );
           case 'Career':
             return (
               <div>
-                <h2>#진로고민방</h2>
+                <h2 className='title'>#진로고민방</h2>
                 <p>진로 고민을 나누고 함께 해결책을 찾아보세요!</p>
               </div>
             );
           case 'Talk':
             return (
               <div>
-                <h2>#수다방</h2>
+                <h2 className='title'>#수다방</h2>
                 <p>여기는 자유롭게 이야기를 나누는 수다방입니다. 편하게 대화해보세요!</p>
               </div>
             );
           case 'Unknown':
             return (
               <div>
-                <h2>#ㅁㅇㄹㅁㅇㄹ</h2>
+                <h2 className='title'>#ㅁㅇㄹㅁㅇㄹ</h2>
                 <p>무엇이든 이야기할 수 있는 공간입니다. 여러분의 이야기를 들려주세요!</p>
               </div>
             );

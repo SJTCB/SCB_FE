@@ -5,7 +5,7 @@ import '../App.css'
 const Navbar = () => {
   return (
     <div>
-      <div className="nav">제목</div> 
+      <div className="nav"></div> 
     </div>
   );
 };
