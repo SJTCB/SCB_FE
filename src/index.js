@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import BoardList from './page/NoticeBoard/BoardList';
+import RankingList from './page/Ranking/RankingList';
+import SearchBox from './page/Search/SearchBox';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <SearchBox />
+    <BoardList />   
+    <RankingList /> 
+       
   </React.StrictMode>
 );
 
