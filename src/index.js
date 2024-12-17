@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import BoardList from './page/NoticeBoard/BoardList';
 import RankingList from './page/Ranking/RankingList';
 import SearchBox from './page/Search/SearchBox';
@@ -10,14 +8,14 @@ import SearchBox from './page/Search/SearchBox';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SearchBox />
-    <BoardList />   
-    <RankingList /> 
-       
+    <div className="indexcontainer"> {/* 전체 컨테이너 */}
+    
+      <div className="vertical-container"> {/* 세로 정렬을 위한 컨테이너 */}
+      <SearchBox />
+      <BoardList />  
+      </div>
+      <RankingList /> 
+      {/* 랭킹 리스트는 가로 정렬 */}
+    </div>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

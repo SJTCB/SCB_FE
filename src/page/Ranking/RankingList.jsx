@@ -1,6 +1,7 @@
 import React from 'react';
 import RankingItem from './RankingItem';
 import './RankingStyle.scss';
+
 const RankingList = () => {
   let rankings = [
     { id: 1, name: "홍길동", score: 98 },
@@ -10,13 +11,13 @@ const RankingList = () => {
     { id: 5, name: "최지훈", score: 88 },
   ];
 
-  // score를 기준으로 오름차순 정렬
-  rankings.sort((a, b) => a.score - b.score);
+  // score를 기준으로 내림차순 정렬
+  rankings.sort((a, b) => b.score - a.score);
 
   return (
-    <div className='ranking-container'>
-      <h2 className='ranking-name'>랭킹</h2>
-      <ul >
+    <div className="ranking-container">
+      <h2 className="ranking-name">랭킹</h2>
+      <ul>
         {rankings.map((ranking, index) => (
           <RankingItem 
             key={ranking.id} 
