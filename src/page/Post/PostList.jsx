@@ -13,7 +13,7 @@ const PostList = ({ posts }) => {
                 <ul>
                     {posts.map((post) => (
                         <li key={post.id}>
-                            <Link to={`/post/${post.id}`}> {/*게시물 제목을 클릭하면 클릭한 POST게시물로 간다. */}
+                            <Link to={`/post/${post.id}`} state={{ post }}> {/*게시물 제목을 클릭하면 클릭한 POST게시물로 간다. */}
                                 <h4>{post.title}</h4>
                                 <p>{post.content.slice(0, 100) + '...'}</p> {/*100글자까지 화면에 보여준다 */}
                             </Link>

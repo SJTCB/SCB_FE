@@ -1,0 +1,93 @@
+.main-layout {
+    display: flex;
+    height: 100vh; /* 전체 화면 높이 설정 */
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    height: 100%; /* 사이드바를 전체 높이로 설정 */
+}
+
+.sidebar .profile {
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.menu-item span {
+    margin-right: 10px;
+}
+
+.sub-menu {
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.sub-menu-item {
+    color: white;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #f4f4f4;
+    padding: 20px; /* 내용 패딩 추가 */
+    height: 100%; /* 메인 콘텐츠를 전체 높이로 설정 */
+}
+
+.navbar {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+}
+
+.community-detail {
+    padding: 20px;
+}
+
+.communication-h2 {
+    margin-bottom: 20px;
+}
+
+.communication-tabs {
+    margin-bottom: 20px;
+    display: flex; /* 탭을 수평으로 정렬 */
+}
+
+.communication-tabs button {
+    margin-right: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.communication-tabs button:hover {
+    background-color: #e0e0e0; /* 호버 시 배경색 변경 */
+}
+
+.communication-tabs button.active {
+    border-bottom: 2px solid blue; /* 활성화된 탭 강조 */
+    font-weight: bold;
+    color: blue; /* 활성화된 텍스트 색상 */
+}
+
+.communication-content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}

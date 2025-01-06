@@ -17,12 +17,13 @@ const PostManager = () => {
     return (
         <div>
             <h1>게시글</h1>
+            <button className='manager-button-container' onClick={() => navigate('/write')}>글쓰기</button>
             <Routes>
                 <Route path="/" element={<PostList posts={posts} />} />
                 <Route path="/post/:id" element={<Post />} />
                 <Route path="/write" element={<WritePost onPostCreated={handlePostCreated} />} />
             </Routes>
-            <button onClick={() => navigate('/write')}>글쓰기</button>
+
         </div>
     );
 };
