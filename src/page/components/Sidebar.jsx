@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Mainlayout';
 
-const Sidebar = ({ onSelectCommunity, onHomeClick }) => {
+const Sidebar = ({ onSelectCommunity, handleHomeClick }) => {
     const [showSubItems, setShowSubItems] = useState(false);
 
     const handleToggle = () => {
@@ -13,7 +13,7 @@ const Sidebar = ({ onSelectCommunity, onHomeClick }) => {
             <div className="profile">
                 <span>👤</span> Profile
             </div>
-            <div className="menu-item" onClick={onHomeClick}>
+            <div className="menu-item" onClick={handleHomeClick}>
                 <span>🏠</span> Home
             </div>
             <div className="menu-item" onClick={handleToggle}>
