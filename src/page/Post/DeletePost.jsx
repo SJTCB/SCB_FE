@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { deleteBoard } from '../Api/api';
 
 const DeletePost = ({ boardId }) => {
     const [isDeleting, setIsDeleting] = useState(false);
@@ -13,16 +14,14 @@ const DeletePost = ({ boardId }) => {
         setError(null);
 
         try {
-            const response = await fetch(`/api/board/boards/${boardId}`, {
-                method: 'DELETE',
-            });
+            const status = await deleteBoard(boardId); // API 호출
 
-            if (response.status === 204) {
+            if (status === 204) {
                 alert('게시판이 삭제되었습니다.');
                 navigate('/'); // 삭제 후 메인 화면으로 리다이렉트
-            } else if (response.status === 403) {
+            } else if (status === 403) {
                 setError('삭제 권한이 없습니다.');
-            } else if (response.status === 404) {
+            } else if (status === 404) {
                 setError('게시판을 찾을 수 없습니다.');
             } else {
                 setError('삭제 중 오류가 발생했습니다.');
@@ -40,7 +39,7 @@ const DeletePost = ({ boardId }) => {
             <button onClick={handleDelete} disabled={isDeleting}>
                 {isDeleting ? '삭제 중...' : '게시판 삭제'}
             </button>
-            {error && <p>{error}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 };

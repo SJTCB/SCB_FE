@@ -1,50 +1,62 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { createBoard } from '../services/board';
 import './Post.scss';
 
-const apiUrl = 'https://port-0-scb-be-m5p35c12a9749b96.sel4.cloudtype.app/';
-
 const WritePost = ({ onPostCreated }) => {
+    const [schoolId, setSchoolId] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [error, setError] = useState(null);
 
-    // 새로운 게시글 추가하기
-    const addPost = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (title && content) {
-            const newPost = {
-                title,
-                content,
-                date_created: new Date().toLocaleDateString(),
-            };
+        if (!schoolId || !title || !content) {
+            setError('모든 필드를 입력해야 합니다.');
+            return;
+        }
 
-            try {
-                const response = await axios.post(`${apiUrl}api/board/boards/`, newPost);
-                onPostCreated(response.data); // 새 포스트 데이터를 부모 컴포넌트에 전달
-                setTitle('');
-                setContent('');
-            } catch (error) {
-                console.error('게시글 작성에 실패했습니다.', error);
-            }
+        const newPost = {
+            school_id: schoolId,
+            title,
+            content,
+        };
+
+        try {
+            const createdPost = await createBoard(newPost); // API 호출
+            onPostCreated(createdPost); // 부모 컴포넌트에 데이터 전달
+            setSchoolId('');
+            setTitle('');
+            setContent('');
+            setError(null); // 에러 초기화
+        } catch (err) {
+            setError('게시글 작성 중 오류가 발생했습니다.');
         }
     };
 
     return (
-        <form className='write-post-container' onSubmit={addPost}>
+        <form className="write-post-container" onSubmit={handleSubmit}>
+            {error && <p className="error-message">{error}</p>}
             <input
                 type="text"
-                className='write-input'
+                className="write-input"
+                placeholder="학번을 입력하세요"
+                value={schoolId}
+                onChange={(e) => setSchoolId(e.target.value)}
+            />
+            <input
+                type="text"
+                className="write-input"
                 placeholder="제목을 입력하세요"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)} // 제목 업데이트
+                onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
-                className='write-textarea'
+                className="write-textarea"
                 placeholder="내용을 추가하세요"
                 value={content}
-                onChange={(e) => setContent(e.target.value)} // 내용 업데이트
+                onChange={(e) => setContent(e.target.value)}
             />
-            <button type="submit" className='write-button'>제출하기</button>
+            <button type="submit" className="write-button">제출하기</button>
         </form>
     );
 };

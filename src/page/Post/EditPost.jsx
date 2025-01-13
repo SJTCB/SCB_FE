@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { fetchBoardDetails, updateBoard } from '../Api/api';
 
 const EditPost = () => {
-    const { id } = useParams(); // URL에서 게시글 ID 받아옴
+    const { id } = useParams(); // URL에서 게시글 ID 가져옴
     const navigate = useNavigate();
     const [post, setPost] = useState({
         title: '',
@@ -12,25 +13,21 @@ const EditPost = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchPost = async () => {
+        const getPostDetails = async () => {
             try {
-                const response = await fetch(`/api/board/boards/${id}/`);
-                if (!response.ok) {
-                    throw new Error('게시판을 찾을 수 없습니다.');
-                }
-                const data = await response.json();
+                const data = await fetchBoardDetails(id); // API 호출
                 setPost({
                     title: data.title,
                     content: data.content
                 });
             } catch (err) {
-                setError(err.message);
+                setError('게시글 정보를 불러오는 데 실패했습니다.');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchPost();
+        getPostDetails();
     }, [id]);
 
     const handleInputChange = (e) => {
@@ -43,36 +40,23 @@ const EditPost = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!post.title || !post.content) {
+            setError('제목과 내용을 모두 입력해주세요.');
+            return;
+        }
         try {
-            const response = await fetch(`/api/board/boards/${id}/`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    title: post.title,
-                    content: post.content
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('게시판 수정 실패');
-            }
-
-            // 수정 후 게시글 상세 페이지로 리디렉션
-            navigate(`/post/${id}`);
+            await updateBoard(id, {
+                title: post.title,
+                content: post.content
+            }); // API 호출
+            navigate(`/post/${id}`); // 수정 후 상세 페이지로 이동
         } catch (err) {
-            setError(err.message);
+            setError('게시글 수정에 실패했습니다.');
         }
     };
 
-    if (loading) {
-        return <div>로딩 중...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
+    if (loading) return <div>로딩 중...</div>;
+    if (error) return <div>{error}</div>;
 
     return (
         <div className="edit-post">
@@ -85,6 +69,7 @@ const EditPost = () => {
                         name="title"
                         value={post.title}
                         onChange={handleInputChange}
+                        placeholder="제목을 입력하세요"
                     />
                 </div>
                 <div>
@@ -93,6 +78,7 @@ const EditPost = () => {
                         name="content"
                         value={post.content}
                         onChange={handleInputChange}
+                        placeholder="내용을 입력하세요"
                     />
                 </div>
                 <button type="submit">수정 완료</button>
