@@ -2,8 +2,8 @@ import { data } from 'react-router-dom';
 import api from '../Api/api';
 
 //게시판 목록 조회 api
-export const fetchBoradList = async () => {
-    const response = await api.get('board/boards')
+export const fetchBoardList = async () => {
+    const response = await api.get('board/boards/')
     return response.data;
 };
 
