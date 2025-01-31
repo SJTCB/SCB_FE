@@ -1,9 +1,9 @@
-.main-layout {
+.Mainlayout-container {
     display: flex;
     height: 100vh; /* 전체 화면 높이 설정 */
 }
 
-.sidebar {
+.Mainlayout-sidebar {
     width: 200px;
     background-color: #333;
     color: white;
@@ -11,35 +11,35 @@
     height: 100%; /* 사이드바를 전체 높이로 설정 */
 }
 
-.sidebar .profile {
+.Mainlayout-sidebar .Mainlayout-profile {
     margin-bottom: 20px;
 }
 
-.menu-item {
+.Mainlayout-menu-item {
     display: flex;
     align-items: center;
     margin: 10px 0;
     cursor: pointer;
 }
 
-.menu-item span {
+.Mainlayout-menu-item span {
     margin-right: 10px;
 }
 
-.sub-menu {
+.Mainlayout-sub-menu {
     margin-left: 20px;
     padding: 10px;
     background-color: #444;
     border-radius: 4px;
 }
 
-.sub-menu-item {
+.Mainlayout-sub-menu-item {
     color: white;
     cursor: pointer;
     margin: 5px 0;
 }
 
-.main-content {
+.Mainlayout-content {
     flex-grow: 1;
     background-color: #f4f4f4;
     padding: 0; /* 패딩 제거 */
@@ -48,7 +48,7 @@
     flex-direction: column; /* 내용 세로 방향으로 정렬 */
 }
 
-.navbar {
+.Mainlayout-navbar {
     background-color: blue; /* 상단 바 색상 */
     color: white;
     padding: 20px;
@@ -57,16 +57,16 @@
     align-items: center; /* 텍스트 중앙 정렬 */
 }
 
-.main-content-area {
+.Mainlayout-content-area {
     flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
     padding: 20px; /* 내용 패딩 추가 */
 }
 
-.post-list {
+.Mainlayout-post-list {
     padding: 20px; /* PostList 내부 패딩 */
 }
 
-.post-item {
+.Mainlayout-post-item {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
@@ -74,10 +74,10 @@
     background-color: white;
 }
 
-.post-item h3 {
+.Mainlayout-post-item h3 {
     color: blue; /* 제목 색상 */
 }
 
-.loading, .error {
+.Mainlayout-loading, .Mainlayout-error {
     color: red; /* 로딩 및 오류 메시지 색상 */
 }

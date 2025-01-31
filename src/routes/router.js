@@ -8,7 +8,7 @@ const SignupForm = lazy(() => import("../pages/signup/SignupForm"));
 const CodeReview = lazy(() => import("../pages/codeReview/CodeReview"));
 const Community = lazy(() => import("../pages/components/Community")); // 커뮤니티 컴포넌트 import
 const CommentDetail = lazy(() => import("../pages/comments/CommentDetail")); // 댓글 상세 컴포넌트 import
-
+const PostList = lazy(()=> import("../pages/post/PostList"));
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +58,14 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/PostList",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <PostList/>
+      </Suspense>
+    )
+  }
 ]);
 
 export default router;

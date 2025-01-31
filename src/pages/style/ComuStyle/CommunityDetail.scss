@@ -1,14 +1,14 @@
-.community-detail {
+.CommunityDetail-container {
   margin: 20px;
 }
 
-.tabs {
+.CommunityDetail-tabs {
   display: flex;
   justify-content: space-around; /* 탭 버튼을 균등하게 배치 */
   margin-bottom: 20px;
 }
 
-button {
+.CommunityDetail-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -26,7 +26,7 @@ button {
   }
 }
 
-.content {
+.CommunityDetail-content {
   padding: 20px;
   border: 1px solid #ccc; /* 콘텐츠 구분선 */
   border-radius: 5px;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './CommunityDetail.scss';
 
 const CommunityDetail = ({ community }) => {
     const [activeTab, setActiveTab] = useState('공지사항'); // 기본 활성화된 탭
@@ -11,8 +12,8 @@ const CommunityDetail = ({ community }) => {
     };
 
     return (
-        <div className="community-detail">
-            <div className="tabs">
+        <div className="CommunityDetail-container">
+            <div className="CommunityDetail-tabs">
                 {tabs.map((tab) => (
                     <button
                         key={tab}
@@ -23,7 +24,7 @@ const CommunityDetail = ({ community }) => {
                     </button>
                 ))}
             </div>
-            <div className="content">
+            <div className="CommunityDetail-content">
                 {activeTab === '공지사항' && <p>여기에 {community}의 공지사항을 추가하세요.</p>}
                 {activeTab === '메시지' && <p>여기에 {community}의 메시지를 추가하세요.</p>}
                 {activeTab === '스크랩' && <p>여기에 {community}의 스크랩 내용을 추가하세요.</p>}

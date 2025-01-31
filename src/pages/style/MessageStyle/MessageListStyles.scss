@@ -1,0 +1,71 @@
+.MessageList-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.MessageList-item {
+  background-color: #ffffff;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.MessageList-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.MessageList-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.MessageList-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.MessageList-content {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.MessageList-comments {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.MessageList-comments-count {
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.MessageList-comment-item {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.MessageList-comment-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.MessageList-comment-content {
+  color: #444;
+}
