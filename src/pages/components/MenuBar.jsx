@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ✅ Link 컴포넌트 추가
+import { Link } from "react-router-dom"; 
 import "./MenuBar.scss";
 
 const MenuBar = () => {

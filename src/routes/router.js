@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
-  {
+  /*{
     path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         <PostList/>
       </Suspense>
     )
-  }
-]);
+  }*/
+]); 
 
 export default router;
