@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import Loading from "../components/Loading";
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from "../pages/components/Mainlayout";
+import QuestionDetailPage from "../components/QuestionDetailPage";
 
 const LoginForm = lazy(() => import("../pages/login/LoginForm"));
 const SignupForm = lazy(() => import("../pages/signup/SignupForm"));
@@ -43,10 +44,22 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/community/:communityName", // 커뮤니티 경로 추가
+    path: "/community",
+    element: <Navigate to="/community/study" replace />,  //기본 경로를 /community/study로 리다이렉트트
+  },
+  {
+    path: "/community/:category", 
     element: (
       <Suspense fallback={<Loading />}>
         <Community />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/community/:category/:question", 
+    element: (
+      <Suspense fallback={<Loading />}>
+        <QuestionDetailPage /> 
       </Suspense>
     ),
   },

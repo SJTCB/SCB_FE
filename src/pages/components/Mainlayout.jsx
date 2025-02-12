@@ -1,49 +1,56 @@
-import React, { useState } from 'react';
-import Sidebar from './Sidebar';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
-import Communication from './Communication'; 
-import CodeReview from '../codeReview/CodeReview'; 
-import PostList from '../post/PostList'; 
-import './Mainlayout.scss';
+import './Mainlayout.scss'; 
+import WorkCard from '../../components/WorkCard';
+import Footer from './Footer';
 
 const MainLayout = () => {
-    const [selectedCommunity, setSelectedCommunity] = useState(null);
-    const [currentPage, setCurrentPage] = useState('postList'); // 초기 페이지 설정
+    const [workData, setWorkData] = useState([]); // ✅ useState 추가하여 workData 상태 선언
 
-    const handleSelectCommunity = (community) => {
-        setSelectedCommunity(community);
-        setCurrentPage('communication'); // 선택된 커뮤니티에 대한 페이지로 전환
-    };
-    
-    const handleHomeClick = () => {
-        setSelectedCommunity(null);
-        setCurrentPage('postList'); // 홈 클릭 시 PostList로 전환
-    };
+    useEffect(() => {
+        fetch("/db.json") // JSON 서버에서 데이터 가져오기
+          .then((response) => response.json())
+          .then((data) => setWorkData(data.works)) // ✅ 올바른 상태 업데이트
+          .catch((error) => console.error("Error fetching data:", error));
+    }, []);
 
-    const handleCodeReviewClick = () => {
-        setCurrentPage('codeReview'); // 코드 리뷰 클릭 시 페이지 전환
-    };
+    // ✅ workData가 존재하는 경우에만 필터링 수행
+    const capstoneWorks = workData?.filter(work => work.category === "작년 캡스톤") || [];
+    const youngRaeWorks = workData?.filter(work => work.category === "영래아 작품") || [];
+    const projectWorks = workData?.filter(work => work.category === "학과 프로젝트") || [];
 
     return (
-        <div className="main-layout">
-            <Sidebar 
-                onSelectCommunity={handleSelectCommunity} 
-                handleHomeClick={handleHomeClick} 
-                handleCodeReviewClick={handleCodeReviewClick} // 코드 리뷰 클릭 핸들러 추가
-            />
-            <div className="main-content">
-                <Navbar />
-                {currentPage === 'postList' ? (
-                    <PostList />
-                ) : currentPage === 'codeReview' ? (
-                    <CodeReview /> // 코드 리뷰 페이지로 전환
-                ) : selectedCommunity ? (
-                    <Communication community={selectedCommunity} /> // 선택된 커뮤니티에 대한 Communication
-                ) : (
-                    <PostList />
-                )}
+    <div>
+        <Navbar/>
+        <div className="work-list">
+        {/* 카테고리 이름을 한 줄로 정렬 */}
+        <div className="category-row">
+            <div className="category-box">🏅 작년 캡스톤 🏅</div>
+            <div className="category-box">🦝 영래아 작품 🦝</div>
+            <div className="category-box">📖 학과 프로젝트 📖</div>
+        </div>
+
+        {/* 각 카테고리에 해당하는 작품 목록을 같은 열에 표시 */}
+        <div className="work-grid-row">
+            <div className="work-grid">
+                {capstoneWorks.map((work) => (
+                    <WorkCard key={work.id} work={work} />  
+                ))}
+            </div>
+            <div className="work-grid">
+                {youngRaeWorks.map((work) => (
+                    <WorkCard key={work.id} work={work} />
+                ))}
+            </div>
+            <div className="work-grid">
+                {projectWorks.map((work) => (
+                    <WorkCard key={work.id} work={work} />
+                ))}
+            </div>
             </div>
         </div>
+        <Footer/>
+    </div>
     );
 };
 

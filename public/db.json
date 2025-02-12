@@ -1,0 +1,47 @@
+{
+    "works": [
+      {
+        "id": 1,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "건강 찰칵",
+        "authors": ["박근표", "정태민", "황나영"],
+        "category": "작년 캡스톤"
+      },
+      {
+        "id": 2,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "스마트 헬스",
+        "authors": ["김지훈", "이수민", "최현우"],
+        "category": "작년 캡스톤"
+      },
+      {
+        "id": 3,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "AI 사진 분석",
+        "authors": ["한지원", "오세진", "강민수"],
+        "category": "영래아 작품"
+      },
+      {
+        "id": 4,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "자율 주행 시스템",
+        "authors": ["박지성", "이강인", "손흥민"],
+        "category": "학과 프로젝트"
+      },
+      {
+        "id": 5,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "음성 인식 챗봇",
+        "authors": ["이민호", "조윤아", "김영수"],
+        "category": "영래아 작품"
+      },
+      {
+        "id": 6,
+        "img": "https://via.placeholder.com/300x200",
+        "title": "스마트 팜",
+        "authors": ["이승기", "김민재", "홍길동"],
+        "category": "학과 프로젝트"
+      }
+    ]
+  }
+  
