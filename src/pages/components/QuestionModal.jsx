@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Community from "./Community";
 import "./QuestionModal.scss";
 
 const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
+  
+  const navigate = useNavigate();
   const [selectedGrade, setSelectedGrade] = useState(""); // 학년 선택 상태
   const [selectedSemester, setSelectedSemester] = useState(""); // 학기 선택 상태
   const [title, setTitle] = useState("");
@@ -39,13 +43,23 @@ const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
     if (!title || !content) return;
 
     const newQuestion = {
+      id: Date.now(),
       title,
       content,
       category, // 현재 카테고리 (study, major, talk)
       selectedGrade,
       selectedSemester
     };
+
+    onClose(); // 모달 닫기
+    navigate(`/community/${category}`);
+    onSubmit(newQuestion); // Community.jsx로 전달
+
+    // 해당 질문 페이지로 이동 (/category/questionId)
     
+  };
+    
+    /*
     try {
       const response = await fetch("http://localhost:8080/question", {
         method: "POST",
@@ -64,7 +78,7 @@ const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
       console.error("서버 오류:", error);
     }
   };
-
+ */
 
   return isOpen ? (
     <div className="modal-overlay" onClick={onClose}>
@@ -154,7 +168,7 @@ const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
           <button className="cancel-btn" onClick={onClose}>
             취소
           </button>
-          <button className={`submit-btn ${title && content ? "active" : ""}`} disabled={!title || !content}>
+          <button className={`submit-btn ${title && content ? "active" : ""}`} onClick={handleSubmit}>
             등록하기
           </button>
         </div>

@@ -2,13 +2,14 @@ import React, { lazy, Suspense } from "react";
 import Loading from "../components/Loading";
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from "../pages/components/Mainlayout";
-import QuestionDetailPage from "../components/QuestionDetailPage";
+
 
 const LoginForm = lazy(() => import("../pages/login/LoginForm"));
 const SignupForm = lazy(() => import("../pages/signup/SignupForm"));
 const CodeReview = lazy(() => import("../pages/codeReview/CodeReview"));
 const Community = lazy(() => import("../pages/components/Community")); // 커뮤니티 컴포넌트 import
 const CommentDetail = lazy(() => import("../pages/comments/CommentDetail")); // 댓글 상세 컴포넌트 import
+const QuestionDetailPage = lazy(() => import("../components/QuestionDetailPage")); //질문 상세페이지 컴포넌트 import 
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/community/:category/:question", 
+    path: "/community/:category/:questionId", 
     element: (
       <Suspense fallback={<Loading />}>
         <QuestionDetailPage /> 

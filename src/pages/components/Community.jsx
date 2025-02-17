@@ -1,40 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "./Community.scss"; // 스타일 파일 임포트
+import "./Community.scss"; 
 import { useParams, Link } from "react-router-dom";
-import QuestionModal from "./QuestionModal"; // 모달 임포트
+import QuestionModal from "./QuestionModal"; 
 import styled from "styled-components";
 import QuestionForm from "../../components/QuestionForm";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addQuestion } from "../../redux/store/questionSlice"; // ✅ Redux 액션 추가
 
 const Community = () => {
 
   const { category } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false); //모달 상태 추가 
-  const [questions, setQuestions] = useState([]); // 질문 리스트 상태 추가
-  
-  
-  // 백엔드에서 질문 목록 가져오기
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/question?category=${category}`); //백엔드 주소 
-        if (response.ok) {
-          const data = await response.json();
-          setQuestions(data.reverse()); // 최신 질문이 위로 오도록 정렬
-        }
-      } catch (error) {
-        console.error("질문 목록 불러오기 실패:", error);
-      }
-    };
+  const dispatch = useDispatch();
+  const questions = useSelector((state) => state.questions.questions[category])  || [];; // ✅ Redux에서 질문 리스트 가져오기
 
-    fetchQuestions();
-  }, [category]);
-
-  // 새로운 질문 추가 (즉시 반영)
+  // ✅ Redux에 새로운 질문 추가 (setQuestions 대신 dispatch 사용)
   const handleNewQuestion = (newQuestion) => {
-    setQuestions((prevQuestions) => [newQuestion, ...prevQuestions]);
+    dispatch(addQuestion(newQuestion)); // ✅ Redux Store에 추가
   };
 
   
@@ -113,9 +97,9 @@ const Community = () => {
               <span>● 최신순</span>
             </div>
              
-            {/* 질문 목록 (회색 박스) */}
+            {/* 질문 목록 */}
             <section className="questions">
-              <QuestionForm category={category}/>
+              <QuestionForm category={category} questions={questions} />
             </section>
           </>
         ) : (
