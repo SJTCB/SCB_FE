@@ -19,6 +19,7 @@ const Community = () => {
   // ✅ Redux에 새로운 질문 추가 (setQuestions 대신 dispatch 사용)
   const handleNewQuestion = (newQuestion) => {
     dispatch(addQuestion(newQuestion)); // ✅ Redux Store에 추가
+    console.log("✅ 업데이트된 질문 리스트:", questions);
   };
 
   
@@ -73,7 +74,7 @@ const Community = () => {
         <main className="content">
         {currentContent ? (
           <>
-            <h3>{currentContent.title}</h3>
+            <h2>{currentContent.title}</h2>
             <p>{currentContent.description}</p>
 
             {/* 검색 바 */}

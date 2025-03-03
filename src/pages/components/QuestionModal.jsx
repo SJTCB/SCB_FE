@@ -6,11 +6,13 @@ import "./QuestionModal.scss";
 const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
   
   const navigate = useNavigate();
+  const [selectedCourse, setSelectedCourse] = useState(""); // ✅ 사용자가 선택한 수업 저장
   const [selectedGrade, setSelectedGrade] = useState(""); // 학년 선택 상태
   const [selectedSemester, setSelectedSemester] = useState(""); // 학기 선택 상태
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  
+ 
+
 
   // 학년과 학기에 따른 수업 목록
   const courseOptions = {
@@ -48,7 +50,8 @@ const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
       content,
       category, // 현재 카테고리 (study, major, talk)
       selectedGrade,
-      selectedSemester
+      selectedSemester,
+      selectedCourse
     };
 
     onClose(); // 모달 닫기
@@ -117,8 +120,12 @@ const QuestionModal = ({ isOpen, onClose, category, onSubmit }) => {
               <option value="2학기">2학기</option>
             </select>
 
-            {/* 수업 선택 */}
-            <select disabled={!selectedGrade || !selectedSemester}>
+            {/* ✅ 수업 선택 (유저가 직접 선택 가능) */}
+            <select 
+              value={selectedCourse} 
+              onChange={(e) => setSelectedCourse(e.target.value)} 
+              disabled={!selectedGrade || !selectedSemester}
+            >
               <option value="">수업 선택</option>
               {availableCourses.map((course, index) => (
                 <option key={index} value={course}>
