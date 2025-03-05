@@ -8,6 +8,7 @@ const MenuBar = ({ moveToHome, moveToIntro, moveToGuest, moveToPhoto }) => {
     <header className="menu-bar">
       <div className="menu-contents">
         <div className="menu-title">
+          {/* 🔹 로고 클릭 시 홈 섹션으로 스크롤 이동 */}
           <a href="#home" onClick={moveToHome}>
             <img src={logo} alt="로고" className="logo-image" />
           </a>

@@ -1,10 +1,13 @@
 import { forwardRef } from "react";
+import "../style/home/GuestBook.scss";
 
 const GuestBook = forwardRef((props, ref) => {
     return (
-        <section ref={ref} id="guestbook">
-            <h2>GuestBook</h2>
-        </section>
+        <div className="GuestBook-layout">
+            <section ref={ref} id="guestbook">
+                <h2>GuestBook</h2>
+            </section>
+        </div>
     );
 });
 

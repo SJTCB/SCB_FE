@@ -1,12 +1,21 @@
-body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .main-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    padding-top: 120px; /* 메뉴바 높이만큼 추가 */
-  }
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* 이미지와 텍스트 사이의 간격을 조정 */
+  margin-top: 50px; /* 상단 여백 조정 */
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-image {
+  width: 45vw; /* 이미지 크기 조정 */
+  height: auto;
+}
