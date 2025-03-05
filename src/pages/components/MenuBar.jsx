@@ -15,13 +15,13 @@ const MenuBar = ({ moveToHome, moveToIntro, moveToGuest, moveToPhoto }) => {
         </div>
         <div className="menu-list">
           <div className="menu-item">
-            <a href="#introduction" onClick={moveToIntro}>학과 소개</a>
+            <a  onClick={moveToIntro}>학과 소개</a>
           </div>
           <div className="menu-item">
-            <a href="#photo" onClick={moveToPhoto}>사진</a>
+            <a  onClick={moveToPhoto}>사진</a>
           </div>
           <div className="menu-item">
-            <a href="#guestbook" onClick={moveToGuest}>방명록</a>
+            <a  onClick={moveToGuest}>방명록</a>
           </div>
           <div className="menu-item">
             <Link to="/login">로그인</Link>
