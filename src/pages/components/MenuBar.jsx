@@ -1,26 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom"; 
-import "./MenuBar.scss";
+import "../style/Main/MenuBar.scss";
+import logo from "../../assets/logo.png"; 
 
-const MenuBar = () => {
+const MenuBar = ({ moveToHome, moveToIntro, moveToGuest, moveToPhoto }) => {
   return (
     <header className="menu-bar">
       <div className="menu-contents">
         <div className="menu-title">
-          <Link to="/">스마트정보통신공학과</Link> {/* 홈으로 이동 */}
+          <a href="#home" onClick={moveToHome}>
+            <img src={logo} alt="로고" className="logo-image" />
+          </a>
         </div>
         <div className="menu-list">
           <div className="menu-item">
-            <Link to="/PostList">게시판</Link>
+            <a href="#introduction" onClick={moveToIntro}>학과 소개</a>
           </div>
           <div className="menu-item">
-            <Link to="/community">커뮤니티</Link>
+            <a href="#photo" onClick={moveToPhoto}>사진</a>
           </div>
           <div className="menu-item">
-            <Link to="/code-review">코드 분석</Link>
+            <a href="#guestbook" onClick={moveToGuest}>방명록</a>
           </div>
           <div className="menu-item">
-            <Link to="/ranking">랭킹</Link>
+            <Link to="/login">로그인</Link>
           </div>
         </div>
       </div>
