@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "../api/api";
 
 export const fetchBoardList = async () => api.get("/api/board/boards/");
 export const createBoard = async (data) => api.post("/api/board/boards/", data);

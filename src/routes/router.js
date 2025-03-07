@@ -5,7 +5,7 @@ import MainLayout from "../pages/components/Mainlayout";
 
 const LoginForm = lazy(() => import("../pages/login/LoginForm"));
 const SignupForm = lazy(() => import("../pages/login/SignupForm"));
-
+const WriteBoard = lazy(() => import("../pages/components/WriteBoard"));
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +28,14 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <SignupForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/writeboard",
+    element: (
+      <Suspense fallback={<Loading/>}>
+      <WriteBoard/>
       </Suspense>
     ),
   },

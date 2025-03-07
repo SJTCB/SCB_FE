@@ -1,0 +1,81 @@
+.writeboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    padding-bottom: 80px; // 버튼과 겹치지 않도록 여백 추가
+
+    .writeboard-h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .writeboard-title-input { // 🛠 제목 입력창만 margin-top 추가
+        margin-top: 50px;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .writeboard-tag-input { // 🛠 태그 입력창에는 margin-top 제거
+        margin-top: 10px;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .writeboard-quill {
+        width: 100%;
+        max-width: 100%;
+        min-height: 300px;
+        margin-bottom: 20px;
+
+        .ql-container {
+            width: 100% !important;
+        }
+
+        .ql-editor {
+            min-height: 250px;
+        }
+    }
+
+    .writeboard-button-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .writeboard-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+
+        &.writeboard-exit {
+            background: none;
+            color: #777;
+        }
+
+        &.writeboard-save {
+            background-color: #6666cc;
+            color: #fff;
+            margin-right: 10px;
+        }
+    }
+}
