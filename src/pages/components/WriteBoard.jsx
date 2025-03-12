@@ -17,22 +17,22 @@ const BoardWrite = () => {
 
     const { school_id, title, content, tags } = board;
 
-    const onChange = (e) => {
+    const onChange = (e) => { //사용자가 입력한 값을 board 상태에 반영하는 함수 
         const { value, name } = e.target;
         setBoard({ ...board, [name]: value });
     };
 
-    const handleEditorChange = (value) => {
+    const handleEditorChange = (value) => { //ReactQuil 에디터에서 입력한 내용을 content에 저장
         setBoard({ ...board, content: value });
     };
 
-    const saveBoard = async () => {
-        if (school_id.length < 1 || school_id.length > 10) {
-            alert("학번은 1~10자 사이여야 합니다.");
+    const saveBoard = async () => { //학번,제목,내용 유효성검사 
+        if (school_id.length < 1 || school_id.length > 9) {
+            alert("학번은 1~9자 사이여야 합니다.");
             return;
         }
-        if (title.length < 1 || title.length > 100) {
-            alert("제목은 1~100자 사이여야 합니다.");
+        if (title.length < 1 || title.length > 20) {
+            alert("제목은 1~20자 사이여야 합니다.");
             return;
         }
         if (content.length < 1) {
@@ -41,10 +41,10 @@ const BoardWrite = () => {
         }
 
         try {
-            await createBoard(board);
-            alert("게시글이 성공적으로 등록되었습니다.");
-            navigate('/board'); 
-        } catch (error) {
+            await createBoard(board); //서버에 게시글 저장 요청-> 응답이 올 때까지 대기
+            alert("게시글이 성공적으로 등록되었습니다."); //요청 성공 후 실행 
+            navigate('/board'); //board로 이동 
+        } catch (error) { 
             console.error("게시글 저장 중 오류 발생:", error);
             alert("게시글 저장에 실패했습니다.");
         }
@@ -73,7 +73,14 @@ const BoardWrite = () => {
                 placeholder="태그를 입력하세요..." 
                 className="writeboard-tag-input"
             />
-            
+            <input
+                type="text"
+                name="school_id"
+                value={school_id}
+                onChange={onChange}
+                placeholder="학번을 입력하세요.."
+                className="writeboard-school_id-input"
+            />
             <ReactQuill 
                 value={content} 
                 onChange={handleEditorChange} 
